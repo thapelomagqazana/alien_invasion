@@ -76,6 +76,13 @@ class AlienInvasion:
 
             self.ship.update()
             self.bullets.update()
+
+            # Get rid of bullets that have disappeared
+            for bullet in self.bullets.copy():
+                if bullet.rect.bottom <= 0:
+                    self.bullets.remove(bullet)
+            # print(len(self.bullets))
+
             # Redraw the screen and fill it with background colour
             # during each pass through the loop
             self._update_screen()
